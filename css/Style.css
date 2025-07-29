@@ -53,7 +53,7 @@ nav a:hover {
 
 /* HERO SECTION */
 .hero {
-    background: url('../images/hero-bg.jpg') center/cover no-repeat;
+    background: url('../Images/hero.jpg') center/cover no-repeat;
     color: white;
     text-align: center;
     padding: 120px 20px;
@@ -299,7 +299,7 @@ footer {
 
 /* PAGE HERO (About Us) */
 .page-hero {
-    background: url('../images/about-bg.jpg') center/cover no-repeat;
+    background: url('../Images/about1.jpg') center/cover no-repeat;
     color: #fff;
     text-align: center;
     padding: 120px 20px;
@@ -462,7 +462,7 @@ footer {
 
 /* HERO IMAGE FOR PORTFOLIO */
 .portfolio-hero {
-    background: url('../images/portfolio-bg.jpg') center/cover no-repeat;
+    background: url('../Images/portfolio1.jpg') center/cover no-repeat;
 }
 
 /* RESPONSIVE */
@@ -579,7 +579,7 @@ footer {
 
 /* HERO IMAGE FOR CONTACT */
 .contact-hero {
-    background: url('../images/contact-bg.jpg') center/cover no-repeat;
+    background: url('../Images/contact1.jpg') center/cover no-repeat;
 }
 /* THANK YOU PAGE */
 .thankyou {
@@ -710,7 +710,7 @@ img {
 
 /* HERO IMAGE FOR SERVICES */
 .services-hero {
-    background: url('../images/services-bg.jpg') center/cover no-repeat;
+    background: url('../Images/service1.png') center/cover no-repeat;
     color: #fff;
     text-align: center;
     padding: 120px 20px;
