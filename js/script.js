@@ -96,4 +96,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            dropdownMenu.style.display = 
+                dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    }
+
+    // ✅ Submenu toggle
+    const submenuParents = document.querySelectorAll('.has-submenu > a');
+    submenuParents.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            link.parentElement.classList.toggle('open');
+        });
+    });
+});
 
