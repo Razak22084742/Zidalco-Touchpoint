@@ -1629,4 +1629,16 @@ img {
 .whatsapp-btn:hover {
     background-color: #1ebe5d;
 }
+#dropdown-menu {
+    display: none; /* hidden by default */
+    flex-direction: column;
+}
+
+#dropdown-menu.active {
+    display: flex; /* show when toggled */
+}
+
+.has-submenu.open > .submenu {
+    display: flex; /* show submenu on click */
+}
 
