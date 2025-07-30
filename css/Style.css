@@ -1642,3 +1642,19 @@ img {
     display: flex; /* show submenu on click */
 }
 
+#dropdown-menu {
+    border: 2px  !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  #dropdown-menu {
+    top: 60px; /* try increasing or decreasing */
+    right: 10px; /* try 0 or auto */
+    left: auto; /* explicitly set left to auto */
+  }
+  #dropdown-menu {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+  }
+  
