@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Civil Engineering - Zidalco Company Limited</title>
+    <title>Building Construction - Zidalco Company Limited</title>
     <link rel="stylesheet" href="css/Style.css">
     <link rel="icon" type="image/png" href="Images/favicon.png">
 </head>
 <body>
-
-    <!-- ✅ Header -->
+  <!-- ✅ Header -->
    <header>
     <div class="logo">
         <img src="Images/logo.jpg" alt="Zidalco Logo" class="logo-img">
@@ -45,7 +44,39 @@
                 </ul>
             </li>
 
-             <li class="has-submenu">
+            <li class="has-submenu">
+                <a href="services.html">Services</a>
+                <ul class="submenu">
+                    <li><a href="building.html">Building Construction</a></li>
+                    <li><a href="civil.html">Civil Engineering</a></li>
+                    <li><a href="design.html">Architectural Design</a></li>
+                </ul>
+            </li>
+
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <nav id="dropdown-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="has-submenu">
+                <a href="about.html">About Us</a>
+                <button class="submenu-toggle">+</button>
+                <ul class="submenu">
+                    <li><a href="about.html#mission">Mission</a></li>
+                    <li><a href="about.html#vision">Vision</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">
                 <a href="services.html">Services</a>
                 <ul class="submenu">
                     <li><a href="building.html">Building Construction</a></li>
@@ -56,31 +87,32 @@
                     <li><a href="consulting.html">Architectural Design</a></li>
                 </ul>
             </li>
-
             <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 </header>
 
-    <!-- ✅ Civil Engineering Hero -->
+    
+
+    <!-- ✅ Building Construction Hero -->
     <section class="page-hero service-hero">
-        <img src="Images/civil1.jpg" alt="Civil Engineering" class="hero-bg">
+        <img src="Images/building1.png" alt="Building Construction" class="hero-bg">
         <div class="hero-overlay">
-            <h1>Civil Engineering</h1>
-            <p>Bridges, roads, and infrastructure projects that connect communities.</p>
+            <h1>Building Construction</h1>
+            <p>Residential, commercial, and industrial excellence</p>
         </div>
     </section>
 
     <!-- Service Details -->
     <section class="service-details">
         <div class="container">
-            <h2>About Civil Engineering</h2>
-            <p>We specialize in large-scale infrastructure development including roads, bridges, drainage systems, and other vital civil projects that support economic growth and community connectivity.</p>
+            <h2>About Building Construction</h2>
+            <p>Zidalco specializes in delivering high-quality building projects for residential, commercial, and industrial clients using durable materials and modern techniques.</p>
             <ul>
-                <li>Road Construction</li>
-                <li>Bridges & Drainage</li>
-                <li>Urban Infrastructure</li>
+                <li>Residential Homes</li>
+                <li>Office Complexes</li>
+                <li>Industrial Buildings</li>
             </ul>
             <a href="contact.html" class="btn">Get a Quote</a>
         </div>
@@ -115,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
+
 </body>
 </html>
-
