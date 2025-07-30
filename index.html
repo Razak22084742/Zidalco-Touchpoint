@@ -419,6 +419,58 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(showNextItem, 4000); // 4 seconds per item
 });
 </script>
+
+<!-- Counter Animation Script -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Counter animation script loaded");
+    
+    const counters = document.querySelectorAll('.counter');
+    console.log('Found counter elements:', counters.length);
+    
+    if (counters.length > 0) {
+        // Use Intersection Observer for better performance
+        const counterOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('Counter animation triggered!');
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(counter); // Only animate once
+                }
+            });
+        }, counterOptions);
+
+        // Observe all counter elements
+        counters.forEach(counter => {
+            console.log('Observing counter:', counter.textContent, 'with target:', counter.getAttribute('data-target'));
+            counterObserver.observe(counter);
+        });
+    } else {
+        console.log('No counter elements found');
+    }
+});
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const expSlides = document.querySelectorAll(".experience-slideshow img");

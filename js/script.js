@@ -40,4 +40,41 @@ document.addEventListener('DOMContentLoaded', function() {
             backdrop.classList.remove('show');
         }
     });
+
+    // Counter animation on scroll
+    const counters = document.querySelectorAll('.counter');
+    const options = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+                observer.unobserve(counter); // Only animate once
+            }
+        });
+    }, options);
+
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
 }); 
+

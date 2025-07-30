@@ -176,37 +176,47 @@ function animateServices() {
 window.addEventListener('scroll', animateServices);
 window.addEventListener('load', animateServices);
 // ====== Animated Counters for Why Choose Us ======
-const counters = document.querySelectorAll('.counter');
-let counterStarted = false;
+document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.counter');
+    console.log('Found counter elements:', counters.length);
+    
+    if (counters.length > 0) {
+        // Use Intersection Observer for better performance
+        const counterOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-function animateCounters() {
-    if (!counterStarted) {
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const updateCounter = () => {
-                const current = +counter.innerText;
-                const increment = Math.ceil(target / 100);
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('Counter animation triggered!');
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    let current = 0;
 
-                if (current < target) {
-                    counter.innerText = current + increment;
-                    setTimeout(updateCounter, 30);
-                } else {
-                    counter.innerText = target;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                    counterObserver.unobserve(counter); // Only animate once
                 }
-            };
-            updateCounter();
-        });
-        counterStarted = true;
-    }
-}
+            });
+        }, counterOptions);
 
-window.addEventListener('scroll', () => {
-    const section = document.querySelector('.why-choose-us');
-    if (section) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            animateCounters();
-        }
+        // Observe all counter elements
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
     }
 });
 
