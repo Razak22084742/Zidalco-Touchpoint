@@ -78,3 +78,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 }); 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const submenuParents = document.querySelectorAll('.has-submenu > a');
+
+    submenuParents.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); // stop the link from navigating immediately
+
+            document.querySelectorAll('.has-submenu').forEach(item => {
+                if (item !== link.parentElement) {
+                    item.classList.remove('open');
+                }
+            });
+
+            link.parentElement.classList.toggle('open');
+        });
+    });
+});
+
+
