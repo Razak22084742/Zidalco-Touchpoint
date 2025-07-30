@@ -1515,39 +1515,7 @@ img {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 1500;
 }
-#dropdown-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-#dropdown-menu li {
-    border-bottom: 1px solid #ccc;
-}
-#dropdown-menu a {
-    display: block;
-    padding: 12px 15px;
-    text-decoration: none;
-    color: #000;
-}
-#dropdown-menu a:hover {
-    background: #006400;
-    color: #fff;
-}
 
-/* Submenu Styling */
-.submenu {
-    display: none;
-    background: #f9f9f9;
-}
-.submenu li a {
-    padding-left: 30px;
-    font-size: 0.95rem;
-    border-bottom: 1px solid #ddd;
-}
-.has-submenu:hover > .submenu {
-    display: block; /* Hover to reveal submenu */
-}
-/* Force dropdown main menu items vertical */
 #dropdown-menu ul {
     list-style: none;
     margin: 0;
@@ -1558,7 +1526,7 @@ img {
 }
 
 #dropdown-menu li {
-    display: block; /* ✅ Each menu item full width */
+    display: block;
     border-bottom: 1px solid #ccc;
 }
 
@@ -1576,22 +1544,24 @@ img {
     color: #fff;
 }
 
-/* Submenu vertical layout */
+/* Submenu Styling */
 .submenu {
     display: none;
-    flex-direction: column;
     background: #f9f9f9;
+    flex-direction: column;
 }
+
 .submenu li a {
     padding-left: 30px;
     font-size: 0.95rem;
     border-bottom: 1px solid #ddd;
 }
 
-/* Show submenu on hover */
-.has-submenu:hover > .submenu {
-    display: flex; /* ✅ Keep submenus vertical too */
+/* ✅ NEW: Use .open instead of :hover */
+.has-submenu.open > .submenu {
+    display: flex; /* Show submenu when parent has .open */
 }
+
 /* Main dropdown links */
 #dropdown-menu > ul > li > a {
     font-size: 1.1rem;
@@ -1618,6 +1588,7 @@ img {
     background: #ddd;
     color: #006400;
 }
+
 #dropdown-menu {
     position: absolute;
     top: 60px; /* adjust based on header height */
@@ -1632,18 +1603,6 @@ img {
     z-index: 9999;
 }
 
-#dropdown-menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;  /* ✅ Vertical layout */
-    gap: 8px;
-}
-
-#dropdown-menu li {
-    width: 100%;
-}
 .services-page {
     background: #f9f9f9;
     padding: 50px 0;
@@ -1655,6 +1614,7 @@ img {
 .services-page p {
     color: #000;
 }
+
 .whatsapp-btn {
     background-color: #25D366; /* WhatsApp green */
     color: white;
