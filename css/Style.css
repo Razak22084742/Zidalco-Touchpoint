@@ -1488,7 +1488,7 @@ img {
 .portfolio-item {
     transition: all 0.3s ease;
 }
-/* Hamburger Button */
+/* 🔹 Hamburger Button */
 .hamburger {
     cursor: pointer;
     display: flex;
@@ -1503,26 +1503,54 @@ img {
     background: #fff;
 }
 
-/* Dropdown Menu */
-/* Dropdown Menu */
+/* 🔹 Hide main nav on small screens so hamburger + dropdown take over */
+@media (max-width: 768px) {
+    .main-nav {
+        display: none; /* Hide header links on phones */
+    }
+    .hamburger {
+        display: flex; /* Show hamburger on phones */
+    }
+}
 
+/* 🔹 Base Dropdown Menu */
+#dropdown-menu {
+    position: absolute;
+    top: 60px; /* adjust based on header height */
+    right: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 9999;
+    border-radius: 8px;
+}
+
+/* 🔹 Show dropdown when active */
+#dropdown-menu.active {
+    display: flex !important; /* ✅ Ensure it appears when toggled */
+}
+
+/* 🔹 Make sure dropdown is fixed on tablets/phones so it doesn't move with content */
 @media (max-width: 1200px) {
     #dropdown-menu {
         position: fixed;
         top: 60px;
         right: 10px;
-        width: 250px;              /* Keep compact size */
-        border-radius: 8px;
     }
 }
 
-
+/* 🔹 Dropdown List */
 #dropdown-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* ✅ Stack items vertically */
+    flex-direction: column;
     width: 100%;
 }
 
@@ -1545,7 +1573,7 @@ img {
     color: #fff;
 }
 
-/* Submenu Styling */
+/* 🔹 Submenu Styling */
 .submenu {
     display: none;
     background: #f9f9f9;
@@ -1558,28 +1586,28 @@ img {
     border-bottom: 1px solid #ddd;
 }
 
-/* ✅ NEW: Use .open instead of :hover */
+/* 🔹 Submenu toggle via .open */
 .has-submenu.open > .submenu {
-    display: flex; /* Show submenu when parent has .open */
+    display: flex;
 }
 
-/* Main dropdown links */
+/* 🔹 Main dropdown links */
 #dropdown-menu > ul > li > a {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #004d00; /* Dark green for main */
+    color: #004d00;
     background: #e6ffe6;
 }
 
-/* Submenu links */
+/* 🔹 Submenu links */
 .submenu a {
     font-size: 0.95rem;
     font-style: italic;
-    color: #333; /* Dark gray for sub */
+    color: #333;
     background: #f9f9f9;
 }
 
-/* Hover states */
+/* 🔹 Hover states */
 #dropdown-menu > ul > li > a:hover {
     background: #006400;
     color: #fff;
@@ -1590,19 +1618,6 @@ img {
     color: #006400;
 }
 
-#dropdown-menu {
-    position: absolute;
-    top: 60px; /* adjust based on header height */
-    right: 10px;
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    display: none;
-    flex-direction: column;
-    max-height: 300px;       /* ✅ Limit height */
-    overflow-y: auto;        /* ✅ Scroll inside dropdown */
-    z-index: 9999;
-}
 .services-page {
     background: #f9f9f9;
     padding: 50px 0;
