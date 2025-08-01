@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hamburger menu click
     if (hamburger) {
         hamburger.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('show');
+            dropdownMenu.classList.toggle('active');
             backdrop.classList.toggle('show');
         });
     }
