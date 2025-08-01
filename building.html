@@ -7,91 +7,58 @@
     <link rel="stylesheet" href="css/Style.css">
     <link rel="icon" type="image/png" href="Images/favicon.png">
 </head>
-<body>
-  <!-- ✅ Header -->
-   <header>
-    <div class="logo">
-        <img src="Images/logo.jpg" alt="Zidalco Logo" class="logo-img">
-        <span class="logo-text">Zidalco</span>
-    </div>
+<body class="services-page"> <!-- ✅ Match Civil.html -->
 
-    <!-- Regular Navigation (Always Visible on Header) -->
-    <nav class="main-nav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+    <!-- ✅ Header -->
+    <header>
+        <div class="logo">
+            <img src="Images/logo.jpg" alt="Zidalco Logo" class="logo-img">
+            <span class="logo-text">Zidalco</span>
+        </div>
 
-    <!-- Hamburger Icon -->
-    <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-    </div>
+        <!-- Regular Navigation -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-    <!-- Dropdown Menu -->
-    <nav id="dropdown-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
 
-            <li class="has-submenu">
-                <a href="about.html">About Us</a>
-                <ul class="submenu">
-                    <li><a href="about.html#mission">Mission</a></li>
-                    <li><a href="about.html#vision">Vision</a></li>
-                </ul>
-            </li>
-
-            <li class="has-submenu">
-                <a href="services.html">Services</a>
-                <ul class="submenu">
-                    <li><a href="building.html">Building Construction</a></li>
-                    <li><a href="civil.html">Civil Engineering</a></li>
-                    <li><a href="design.html">Architectural Design</a></li>
-                </ul>
-            </li>
-
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-    <!-- Hamburger Icon -->
-    <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-    </div>
-
-    <!-- Dropdown Menu -->
-    <nav id="dropdown-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="has-submenu">
-                <a href="about.html">About Us</a>
-                <button class="submenu-toggle">+</button>
-                <ul class="submenu">
-                    <li><a href="about.html#mission">Mission</a></li>
-                    <li><a href="about.html#vision">Vision</a></li>
-                </ul>
-            </li>
-            <li class="has-submenu">
-                <a href="services.html">Services</a>
-                <ul class="submenu">
-                    <li><a href="building.html">Building Construction</a></li>
-                    <li><a href="civil.html">Civil Engineering</a></li>
-                    <li><a href="design.html">Architectural Design</a></li>
-                    <li><a href="renovations.html">Renovations</a></li>
-                    <li><a href="project.html">Project Management</a></li>
-                    <li><a href="consulting.html">Architectural Design</a></li>
-                </ul>
-            </li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+        <!-- Dropdown Menu -->
+        <nav id="dropdown-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="has-submenu">
+                    <a href="about.html">About Us</a>
+                    <ul class="submenu">
+                        <li><a href="about.html#mission">Mission</a></li>
+                        <li><a href="about.html#vision">Vision</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="services.html">Services</a>
+                    <ul class="submenu">
+                        <li><a href="building.html">Building Construction</a></li>
+                        <li><a href="civil.html">Civil Engineering</a></li>
+                        <li><a href="design.html">Architectural Design</a></li>
+                        <li><a href="renovations.html">Renovations</a></li>
+                        <li><a href="project.html">Project Management</a></li>
+                        <li><a href="consulting.html">Consulting</a></li>
+                    </ul>
+                </li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- ✅ Building Construction Hero -->
     <section class="page-hero service-hero">
@@ -102,7 +69,7 @@
         </div>
     </section>
 
-    <!-- Service Details -->
+    <!-- ✅ Service Details -->
     <section class="service-details">
         <div class="container">
             <h2>About Building Construction</h2>
@@ -116,7 +83,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ✅ Footer -->
     <footer>
         <p>&copy; 2025 Zidalco Company Limited | All Rights Reserved</p>
         <p>
@@ -129,23 +96,6 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const hamburger = document.getElementById("hamburger");
-    const dropdownMenu = document.getElementById("dropdown-menu");
-
-    hamburger.addEventListener("click", () => {
-        dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-    });
-
-    document.addEventListener("click", (e) => {
-        if (!hamburger.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.style.display = "none";
-        }
-    });
-});
-</script>
-
-
 </body>
 </html>
+
