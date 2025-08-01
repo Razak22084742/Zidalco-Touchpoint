@@ -16,7 +16,7 @@
             <span class="logo-text">Zidalco</span>
         </div>
 
-        <!-- Regular Navigation -->
+        <!-- ✅ Main Navigation -->
         <nav class="main-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -27,12 +27,12 @@
             </ul>
         </nav>
 
-        <!-- Hamburger Icon -->
+        <!-- ✅ Hamburger -->
         <div class="hamburger" id="hamburger">
             <span></span><span></span><span></span>
         </div>
 
-        <!-- Dropdown Menu -->
+        <!-- ✅ Dropdown Menu -->
         <nav id="dropdown-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -96,7 +96,41 @@
         <p>Email: zidalcoltd@gmail.com | Phone: +233 248607920</p>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <!-- ✅ Global Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+
+        // Toggle dropdown
+        hamburger.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+            hamburger.classList.toggle('open');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+                hamburger.classList.remove('open');
+            }
+        });
+
+        // Submenu toggle
+        const submenuParents = document.querySelectorAll('.has-submenu > a');
+        submenuParents.forEach(link => {
+            link.addEventListener('click', function (e) {
+                const parent = link.parentElement;
+                const submenu = parent.querySelector('.submenu');
+                if (submenu) {
+                    e.preventDefault();
+                    parent.classList.toggle('open');
+                }
+            });
+        });
+    });
+    </script>
+
 </body>
 </html>
 
