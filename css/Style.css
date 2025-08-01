@@ -1505,17 +1505,6 @@ img {
 
 /* Dropdown Menu */
 /* Dropdown Menu */
-#dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 15px;
-    background: #fff;
-    width: 250px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 300;
-}
 
 #dropdown-menu ul {
     list-style: none;
@@ -1599,6 +1588,7 @@ img {
     padding: 10px;
     display: none;
     flex-direction: column;
+    width: 250px;
     max-height: 300px;       /* ✅ Limit height */
     overflow-y: auto;        /* ✅ Scroll inside dropdown */
     z-index: 9999;
