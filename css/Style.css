@@ -1515,11 +1515,13 @@ img {
         border-radius: 8px;
     }
 }
+
+
 #dropdown-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: block;
+    display: flex;
     flex-direction: column; /* ✅ Stack items vertically */
     width: 100%;
 }
@@ -1592,18 +1594,15 @@ img {
     position: absolute;
     top: 60px; /* adjust based on header height */
     right: 10px;
-    left: auto;
     background: #fff;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     padding: 10px;
     display: none;
     flex-direction: column;
-    width: 250px;
     max-height: 300px;       /* ✅ Limit height */
     overflow-y: auto;        /* ✅ Scroll inside dropdown */
     z-index: 9999;
 }
-
 .services-page {
     background: #f9f9f9;
     padding: 50px 0;
@@ -1654,7 +1653,7 @@ img {
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.4);
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1675,4 +1674,3 @@ img {
         font-size: 1rem;
     }
 }
-
