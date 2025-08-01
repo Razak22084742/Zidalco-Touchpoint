@@ -1689,3 +1689,22 @@ body {
   margin: 0;
 }
 
+/* ✅ Static footer on small screens */
+@media (max-width: 768px) {
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: inherit; /* Keeps your current footer background color */
+    color: inherit;       /* Keeps your current footer text color */
+    text-align: center;
+    padding: 10px;
+    z-index: 999;
+  }
+
+  /* ✅ Prevent footer overlapping content */
+  body {
+    padding-bottom: 60px; /* Adjust based on footer height */
+  }
+}
