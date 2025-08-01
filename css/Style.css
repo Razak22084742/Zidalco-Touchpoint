@@ -1503,20 +1503,39 @@ img {
     background: #fff;
 }
 
+
 /* 🔹 Hide main nav on small screens so hamburger + dropdown take over */
 @media (max-width: 768px) {
     .main-nav {
-        display: none; /* Hide header links on phones */
+        display: none; /* Hide desktop nav on phones */
     }
     .hamburger {
         display: flex; /* Show hamburger on phones */
     }
+    #dropdown-menu li {
+        display: block; /* Keep dropdown items visible */
+    }
+}
+
+/* 🔹 Hide hamburger by default (desktop/tablet) */
+.hamburger {
+    display: none; /* Hidden until mobile breakpoint */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 15px;
+    z-index: 2000;
+}
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #fff;
 }
 
 /* 🔹 Base Dropdown Menu */
 #dropdown-menu {
     position: absolute;
-    top: 60px; /* adjust based on header height */
+    top: 60px;
     right: 10px;
     background: #fff;
     border: 1px solid #ccc;
@@ -1532,10 +1551,10 @@ img {
 
 /* 🔹 Show dropdown when active */
 #dropdown-menu.active {
-    display: flex !important; /* ✅ Ensure it appears when toggled */
+    display: flex !important;
 }
 
-/* 🔹 Make sure dropdown is fixed on tablets/phones so it doesn't move with content */
+/* 🔹 Make dropdown fixed on all small devices */
 @media (max-width: 1200px) {
     #dropdown-menu {
         position: fixed;
@@ -1555,7 +1574,6 @@ img {
 }
 
 #dropdown-menu li {
-    display: block;
     border-bottom: 1px solid #ccc;
 }
 
@@ -1617,6 +1635,16 @@ img {
     background: #ddd;
     color: #006400;
 }
+
+/* 🔹 Force visibility to debug */
+#dropdown-menu ul,
+#dropdown-menu li,
+#dropdown-menu a {
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #000 !important;
+}
+
 
 .services-page {
     background: #f9f9f9;
@@ -1688,12 +1716,4 @@ img {
     .service-hero .hero-overlay p {
         font-size: 1rem;
     }
-}
-#dropdown-menu ul,
-#dropdown-menu li,
-#dropdown-menu a {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    color: #000 !important;
 }
