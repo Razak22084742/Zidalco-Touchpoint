@@ -1506,6 +1506,15 @@ img {
 /* Dropdown Menu */
 /* Dropdown Menu */
 
+@media (max-width: 1200px) {
+    #dropdown-menu {
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        width: 250px;              /* Keep compact size */
+        border-radius: 8px;
+    }
+}
 #dropdown-menu ul {
     list-style: none;
     margin: 0;
@@ -1584,7 +1593,7 @@ img {
     top: 60px; /* adjust based on header height */
     right: 10px;
     left: auto;
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: #fff;
     border: 2px solid #ccc;
     padding: 10px;
     display: none;
