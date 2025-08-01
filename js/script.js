@@ -1,59 +1,45 @@
+// Dropdown menu functionality
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const dropdownMenu = document.getElementById('dropdown-menu');
     let backdrop = document.querySelector('.dropdown-backdrop');
 
-    // ✅ Create backdrop if it doesn't exist
+    // Create backdrop if it doesn't exist
     if (!backdrop) {
         backdrop = document.createElement('div');
         backdrop.className = 'dropdown-backdrop';
         document.body.appendChild(backdrop);
     }
 
-    // ✅ Toggle dropdown on hamburger click
+    // Hamburger menu click
     if (hamburger) {
         hamburger.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('active');   // ✅ Match CSS class
-            backdrop.classList.toggle('active');       // ✅ Match backdrop class
+            dropdownMenu.classList.toggle('show');
+            backdrop.classList.toggle('show');
         });
     }
 
-    // ✅ Close menu when clicking on backdrop
+    // Backdrop click to close menu
     backdrop.addEventListener('click', function() {
-        dropdownMenu.classList.remove('active');
-        backdrop.classList.remove('active');
+        dropdownMenu.classList.remove('show');
+        backdrop.classList.remove('show');
     });
 
-    // ✅ Close menu when clicking outside
+    // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!hamburger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.remove('active');
-            backdrop.classList.remove('active');
+            dropdownMenu.classList.remove('show');
+            backdrop.classList.remove('show');
         }
     });
 
-    // ✅ Close menu when pressing Escape key
+    // Close menu when pressing Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-            dropdownMenu.classList.remove('active');
-            backdrop.classList.remove('active');
+            dropdownMenu.classList.remove('show');
+            backdrop.classList.remove('show');
         }
     });
-
-    // ✅ Submenu toggle on click (for mobile)
-    const submenuParents = document.querySelectorAll('.has-submenu > a');
-    submenuParents.forEach(link => {
-        link.addEventListener('click', function (e) {
-            const parent = link.parentElement;
-            const submenu = parent.querySelector('.submenu');
-
-            if (submenu) {
-                e.preventDefault();
-                parent.classList.toggle('open');
-            }
-        });
-    });
-});
 
     // Counter animation on scroll
     const counters = document.querySelectorAll('.counter');
@@ -121,4 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    
+    // ✅ Submenu toggle
+    const submenuParents = document.querySelectorAll('.has-submenu > a');
+    submenuParents.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            link.parentElement.classList.toggle('open');
+        });
+    });
+});
