@@ -1689,3 +1689,11 @@ img {
         font-size: 1rem;
     }
 }
+#dropdown-menu ul,
+#dropdown-menu li,
+#dropdown-menu a {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #000 !important;
+}
