@@ -1506,7 +1506,7 @@ img {
 /* Dropdown Menu */
 /* 🔹 Base Dropdown Styling */
 #dropdown-menu {
-    display: flex;                 /* Hidden by default */
+    display: none;                 /* Hidden by default */
     flex-direction: column;        /* Stack items vertically */
     position: fixed;               /* Stay visible on scroll */
     top: 60px;                     /* Adjust to header height */
