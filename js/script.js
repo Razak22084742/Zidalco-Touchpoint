@@ -4,42 +4,47 @@ document.addEventListener('DOMContentLoaded', function() {
     const dropdownMenu = document.getElementById('dropdown-menu');
     let backdrop = document.querySelector('.dropdown-backdrop');
 
-    // Create backdrop if it doesn't exist
     if (!backdrop) {
         backdrop = document.createElement('div');
         backdrop.className = 'dropdown-backdrop';
         document.body.appendChild(backdrop);
     }
 
-    // Hamburger menu click
     if (hamburger) {
         hamburger.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('show');
-            backdrop.classList.toggle('show');
+            dropdownMenu.classList.toggle('active');  // ✅ use 'active'
+            backdrop.classList.toggle('active');      // ✅ use 'active'
+            console.log('Menu children:', dropdownMenu.innerHTML);
         });
     }
 
-    // Backdrop click to close menu
     backdrop.addEventListener('click', function() {
-        dropdownMenu.classList.remove('show');
-        backdrop.classList.remove('show');
+        dropdownMenu.classList.remove('active');      // ✅ use 'active'
+        backdrop.classList.remove('active');
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!hamburger.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.remove('show');
-            backdrop.classList.remove('show');
+            dropdownMenu.classList.remove('active');
+            backdrop.classList.remove('active');
         }
     });
 
-    // Close menu when pressing Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-            dropdownMenu.classList.remove('show');
-            backdrop.classList.remove('show');
+            dropdownMenu.classList.remove('active');
+            backdrop.classList.remove('active');
         }
     });
+
+    const submenuParents = document.querySelectorAll('.has-submenu > a');
+    submenuParents.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            link.parentElement.classList.toggle('open');
+        });
+    });
+});
 
     // Counter animation on scroll
     const counters = document.querySelectorAll('.counter');
@@ -107,18 +112,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ✅ Submenu toggle
-    const submenuParents = document.querySelectorAll('.has-submenu > a');
-    submenuParents.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            link.parentElement.classList.toggle('open');
-        });
-    });
-});
-
-const menu = document.getElementById('dropdown-menu');
-hamburger.addEventListener('click', () => {
-  menu.classList.toggle('active');
-  console.log('Menu children:', menu.innerHTML);
-});
+    
