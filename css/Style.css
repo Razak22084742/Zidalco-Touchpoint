@@ -1701,3 +1701,71 @@ img {
         font-size: 1rem;
     }
 }
+
+/* 🔹 Base Dropdown Styling */
+#dropdown-menu {
+    display: none;                 /* Hidden by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: #fff;
+    width: 250px;                  /* Compact size */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* 🔹 Show menu when active */
+#dropdown-menu.active {
+    display: flex;
+}
+
+/* 🔹 Make sure small screens use same style as tablets */
+@media (max-width: 1200px) {
+    #dropdown-menu {
+        position: fixed;
+        top: 60px;
+        right: 10px;
+        width: 250px;              /* Keep compact size */
+        border-radius: 8px;
+    }
+}
+
+/* 🔹 List & links */
+#dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#dropdown-menu li {
+    border-bottom: 1px solid #ccc;
+}
+
+#dropdown-menu a {
+    display: block;
+    padding: 12px 15px;
+    color: #000;
+    text-decoration: none;
+}
+
+#dropdown-menu a:hover {
+    background: #006400;
+    color: #fff;
+}
+
+/* 🔹 Submenu hidden by default */
+.submenu {
+    display: none;
+    flex-direction: column;
+    background: #f9f9f9;
+}
+
+/* 🔹 Open class for submenu toggle (JS) */
+.has-submenu.open > .submenu {
+    display: flex;
+}
