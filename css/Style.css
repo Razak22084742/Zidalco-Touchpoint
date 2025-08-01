@@ -1525,12 +1525,12 @@ img {
 }
 
 #dropdown-menu li {
-    display: block;
+    display: flex;
     border-bottom: 1px solid #ccc;
 }
 
 #dropdown-menu a {
-    display: block;
+    display: flex;
     padding: 12px 15px;
     text-decoration: none;
     color: #000;
@@ -1545,7 +1545,7 @@ img {
 
 /* Submenu Styling */
 .submenu {
-    display: none;
+    display: flex;
     background: #f9f9f9;
     flex-direction: column;
 }
@@ -1596,7 +1596,7 @@ img {
     background: #fff;
     border: 2px solid #ccc;
     padding: 10px;
-    display: none;
+    display: flex;
     flex-direction: column;
     width: 250px;
     max-height: 300px;       /* ✅ Limit height */
@@ -1664,7 +1664,7 @@ img {
 }
 
 /* 🔹 Responsive tweak for phones */
-@media (max-width: 600px) {
+@media (max-width: auto) {
     .service-hero {
         height: 200px; /* Shorter hero on phones */
     }
