@@ -1703,33 +1703,21 @@ body {
   margin: 0;
 }
 
-/*  Static green footer on small screens */
-@media (max-width: 768px) {
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #004d00;   /* Match header green */
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    z-index: 999;
-  }
-
-  /*  Prevent footer overlapping content */
-  body {
-    padding-bottom: 60px; /* Adjust to match footer height */
-  }
-
-  /*  Footer links: white and underlined */
-  footer a {
-    color: #fff;
-    text-decoration: underline; /* Always underlined */
-    font-weight: 500;
-  }
-
-  footer a:hover {
-    color: #e6ffe6; /* Slightly lighter greenish-white on hover */
-  }
+/* ✅ Green footer with underlined links on all screens */
+footer {
+  background: #004d00;   /* Match header green */
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
 }
+
+/* ✅ Footer links: white and underlined */
+footer a {
+  color: #fff;
+  text-decoration: underline; /* Always underlined */
+  font-weight: 500;
+}
+
+footer a:hover {
+  color: #e
