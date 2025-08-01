@@ -1657,4 +1657,23 @@ img {
     top: 60px;
     right: 10px;
   }
-  
+
+/* Force vertical dropdown on mobile */
+@media (max-width: 600px) {
+  #dropdown-menu ul {
+    display: flex;
+    flex-direction: column; /* ✅ stack items vertically */
+    width: 100%;
+  }
+
+  #dropdown-menu li {
+    display: block;
+    width: 100%;
+  }
+
+  #dropdown-menu a {
+    display: block;
+    width: 100%;
+  }
+}
+
