@@ -1511,10 +1511,10 @@ img {
     top: 60px;
     right: 15px;
     background: #fff;
-    width: 250px;
+    width: 100px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 1500;
+    z-index: 300;
 }
 
 #dropdown-menu ul {
