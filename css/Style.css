@@ -1504,51 +1504,45 @@ img {
 }
 
 /* Dropdown Menu */
-/* 🔹 Base Dropdown Styling */
+/* 🔹 Base Dropdown Styling (Desktop & Landscape) */
 #dropdown-menu {
     display: none;                 /* Hidden by default */
-    flex-direction: column;        /* Stack items vertically */
-    position: fixed !important;               /* Stay visible on scroll */
+    flex-direction: column;
+    position: fixed;
     top: 60px;                     /* Adjust to header height */
     right: 10px;
-    left: auto;
-    width: 80%;                    /* Default width (desktop/tablet) */
+    width: 80%;
     max-width: 300px;
-    background: #fff !important;
+    background: #fff;
     border: 2px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     padding: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 999999;
+    z-index: 10000;
 }
 
-/* 🔹 Show when active */
+/* 🔹 Show menu */
 #dropdown-menu.active {
     display: flex;
 }
 
-/* 🔹 Fullscreen mode on small devices */
-@media (max-width: 600px) {
+/* 🔹 Fullscreen mode in portrait orientation */
+@media (orientation: portrait) {
     #dropdown-menu {
+        position: fixed;
         top: 0;
-        right: 0;
         left: 0;
+        right: 0;
         width: 100%;
-        height: auto;               /* ✅ Let height adapt */
-        max-height: 100vh;
-        border-radius: 0;
+        height: 100vh;             /* ✅ Cover full screen height */
+        max-width: none;
         border: none;
+        border-radius: 0;
         padding: 20px;
-        background: #fff;           /* ✅ Solid background */
-        z-index: 9999;              /* ✅ Above all */
-    }
-    #dropdown-menu a {
-        color: #000;                /* ✅ Make text visible */
+        background: #fff;
+        z-index: 10001;
     }
 }
-
 
 /* 🔹 List Styling */
 #dropdown-menu ul {
@@ -1556,32 +1550,23 @@ img {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;        /* Always vertical */
+    flex-direction: column;
     width: 100%;
-    visibility: visible !important;
-    opacity: 1 !important;
-     z-index: 999999 !important;
-  position: relative !important;
 }
 
 #dropdown-menu li {
     display: block;
     border-bottom: 1px solid #ccc;
     width: 100%;
-    display: block !important;
-    color: #000 !important;
-    background: #fff !important;
 }
 
-/* 🔹 Links */
 #dropdown-menu a {
     display: block;
-    padding: 12px 15px;
+    padding: 15px;
     text-decoration: none;
     color: #000;
     width: 100%;
     box-sizing: border-box;
-    color: #000 !important;
 }
 
 #dropdown-menu a:hover {
@@ -1602,12 +1587,11 @@ img {
     border-bottom: 1px solid #ddd;
 }
 
-/* Show submenu on click */
 .has-submenu.open > .submenu {
     display: flex;
 }
 
-/* 🔹 Main links */
+/* 🔹 Main & Submenu Colors */
 #dropdown-menu > ul > li > a {
     font-size: 1.1rem;
     font-weight: bold;
@@ -1615,7 +1599,6 @@ img {
     background: #e6ffe6;
 }
 
-/* 🔹 Submenu links */
 .submenu a {
     font-size: 0.95rem;
     font-style: italic;
@@ -1632,6 +1615,23 @@ img {
     background: #ddd;
     color: #006400;
 }
+
+/* 🔹 Dimmed backdrop */
+.dropdown-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 10000;
+}
+
+.dropdown-backdrop.active {
+    display: block;
+}
+
 
 
 .services-page {
