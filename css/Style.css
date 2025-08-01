@@ -1504,65 +1504,36 @@ img {
 }
 
 /* Dropdown Menu */
-/* 🔹 Base Dropdown Styling (Desktop & Landscape) */
+/* Dropdown Menu */
 #dropdown-menu {
-    display: none;                 /* Hidden by default */
-    flex-direction: column;
-    position: fixed;
-    top: 60px;                     /* Adjust to header height */
-    right: 10px;
-    width: 80%;
-    max-width: 300px;
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 15px;
     background: #fff;
-    border: 2px solid #ccc;
+    width: 250px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    padding: 10px;
-    z-index: 10000;
+    z-index: 1500;
 }
 
-/* 🔹 Show menu */
-#dropdown-menu.active {
-    display: flex;
-}
-
-/* 🔹 Fullscreen mode in portrait orientation */
-@media (orientation: portrait) {
-    #dropdown-menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 100vh;             /* ✅ Cover full screen height */
-        max-width: none;
-        border: none;
-        border-radius: 0;
-        padding: 20px;
-        background: #fff;
-        z-index: 10001;
-    }
-}
-
-/* 🔹 List Styling */
 #dropdown-menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* ✅ Stack items vertically */
     width: 100%;
 }
 
 #dropdown-menu li {
     display: block;
     border-bottom: 1px solid #ccc;
-    width: 100%;
 }
 
 #dropdown-menu a {
     display: block;
-    padding: 15px;
+    padding: 12px 15px;
     text-decoration: none;
     color: #000;
     width: 100%;
@@ -1574,7 +1545,7 @@ img {
     color: #fff;
 }
 
-/* 🔹 Submenu Styling */
+/* Submenu Styling */
 .submenu {
     display: none;
     background: #f9f9f9;
@@ -1587,25 +1558,28 @@ img {
     border-bottom: 1px solid #ddd;
 }
 
+/* ✅ NEW: Use .open instead of :hover */
 .has-submenu.open > .submenu {
-    display: flex;
+    display: flex; /* Show submenu when parent has .open */
 }
 
-/* 🔹 Main & Submenu Colors */
+/* Main dropdown links */
 #dropdown-menu > ul > li > a {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #004d00;
+    color: #004d00; /* Dark green for main */
     background: #e6ffe6;
 }
 
+/* Submenu links */
 .submenu a {
     font-size: 0.95rem;
     font-style: italic;
-    color: #333;
+    color: #333; /* Dark gray for sub */
     background: #f9f9f9;
 }
 
+/* Hover states */
 #dropdown-menu > ul > li > a:hover {
     background: #006400;
     color: #fff;
@@ -1616,23 +1590,19 @@ img {
     color: #006400;
 }
 
-/* 🔹 Dimmed backdrop */
-.dropdown-backdrop {
+#dropdown-menu {
+    position: absolute;
+    top: 60px; /* adjust based on header height */
+    right: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 10000;
+    flex-direction: column;
+    max-height: 300px;       /* ✅ Limit height */
+    overflow-y: auto;        /* ✅ Scroll inside dropdown */
+    z-index: 9999;
 }
-
-.dropdown-backdrop.active {
-    display: block;
-}
-
-
 
 .services-page {
     background: #f9f9f9;
@@ -1660,3 +1630,32 @@ img {
 .whatsapp-btn:hover {
     background-color: #1ebe5d;
 }
+
+#dropdown-menu {
+    display: none; /* hidden by default */
+    flex-direction: column;
+}
+
+#dropdown-menu.active {
+    display: flex; /* show when toggled */
+}
+
+.has-submenu.open > .submenu {
+    display: flex; /* show submenu on click */
+}
+#dropdown-menu {
+    border: 2px  !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  #dropdown-menu {
+    top: 60px; /* try increasing or decreasing */
+    right: 10px; /* try 0 or auto */
+    left: auto; /* explicitly set left to auto */
+  }
+  #dropdown-menu {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+  }
+  
