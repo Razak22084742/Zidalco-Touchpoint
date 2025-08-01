@@ -1519,18 +1519,18 @@ img {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
+    display: block;
     flex-direction: column; /* ✅ Stack items vertically */
     width: 100%;
 }
 
 #dropdown-menu li {
-    display: flex;
+    display: block;
     border-bottom: 1px solid #ccc;
 }
 
 #dropdown-menu a {
-    display: flex;
+    display: block;
     padding: 12px 15px;
     text-decoration: none;
     color: #000;
@@ -1545,7 +1545,7 @@ img {
 
 /* Submenu Styling */
 .submenu {
-    display: flex;
+    display: none;
     background: #f9f9f9;
     flex-direction: column;
 }
@@ -1596,7 +1596,7 @@ img {
     background: #fff;
     border: 2px solid #ccc;
     padding: 10px;
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 250px;
     max-height: 300px;       /* ✅ Limit height */
@@ -1654,7 +1654,7 @@ img {
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.4);
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -1664,7 +1664,7 @@ img {
 }
 
 /* 🔹 Responsive tweak for phones */
-@media (max-width: auto) {
+@media (max-width: 600px) {
     .service-hero {
         height: 200px; /* Shorter hero on phones */
     }
