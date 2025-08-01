@@ -1,28 +1,30 @@
-// Dropdown menu functionality
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const dropdownMenu = document.getElementById('dropdown-menu');
     let backdrop = document.querySelector('.dropdown-backdrop');
 
+    // ✅ Create backdrop if it doesn't exist
     if (!backdrop) {
         backdrop = document.createElement('div');
         backdrop.className = 'dropdown-backdrop';
         document.body.appendChild(backdrop);
     }
 
+    // ✅ Toggle menu and backdrop on hamburger click
     if (hamburger) {
         hamburger.addEventListener('click', function() {
-            dropdownMenu.classList.toggle('active');  // ✅ use 'active'
-            backdrop.classList.toggle('active');      // ✅ use 'active'
-            console.log('Menu children:', dropdownMenu.innerHTML);
+            dropdownMenu.classList.toggle('active');
+            backdrop.classList.toggle('active');
         });
     }
 
+    // ✅ Close menu when clicking on backdrop
     backdrop.addEventListener('click', function() {
-        dropdownMenu.classList.remove('active');      // ✅ use 'active'
+        dropdownMenu.classList.remove('active');
         backdrop.classList.remove('active');
     });
 
+    // ✅ Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (!hamburger.contains(event.target) && !dropdownMenu.contains(event.target)) {
             dropdownMenu.classList.remove('active');
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ✅ Close menu on Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             dropdownMenu.classList.remove('active');
@@ -37,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ✅ Submenu toggle
     const submenuParents = document.querySelectorAll('.has-submenu > a');
     submenuParents.forEach(link => {
         link.addEventListener('click', function (e) {
