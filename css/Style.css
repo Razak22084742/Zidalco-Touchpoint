@@ -1505,37 +1505,21 @@ img {
 
 
 /* 🔹 Hide main nav on small screens so hamburger + dropdown take over */
-@media (max-width: 768px) {
-    .main-nav {
-        display: none; /* Hide desktop nav on phones */
-    }
+/* 🔹 Hide main nav on small screens so hamburger + dropdown take over */
+@media (max-width:768px) {
+    .main-nav { display:none; } /* Only hide header nav */
+    #dropdown-menu li { display:block; } /* Keep dropdown visible */
+}
+
     .hamburger {
         display: flex; /* Show hamburger on phones */
     }
-    #dropdown-menu li {
-        display: block; /* Keep dropdown items visible */
-    }
-}
-
-/* 🔹 Hide hamburger by default (desktop/tablet) */
-.hamburger {
-    display: none; /* Hidden until mobile breakpoint */
-    cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
-    margin-left: 15px;
-    z-index: 2000;
-}
-.hamburger span {
-    width: 30px;
-    height: 3px;
-    background: #fff;
 }
 
 /* 🔹 Base Dropdown Menu */
 #dropdown-menu {
     position: absolute;
-    top: 60px;
+    top: 60px; /* adjust based on header height */
     right: 10px;
     background: #fff;
     border: 1px solid #ccc;
@@ -1551,10 +1535,10 @@ img {
 
 /* 🔹 Show dropdown when active */
 #dropdown-menu.active {
-    display: flex !important;
+    display: flex !important; /* ✅ Ensure it appears when toggled */
 }
 
-/* 🔹 Make dropdown fixed on all small devices */
+/* 🔹 Make sure dropdown is fixed on tablets/phones so it doesn't move with content */
 @media (max-width: 1200px) {
     #dropdown-menu {
         position: fixed;
@@ -1574,6 +1558,7 @@ img {
 }
 
 #dropdown-menu li {
+    display: block;
     border-bottom: 1px solid #ccc;
 }
 
@@ -1636,6 +1621,7 @@ img {
     color: #006400;
 }
 
+}
 /* 🔹 Force visibility to debug */
 #dropdown-menu ul,
 #dropdown-menu li,
@@ -1722,151 +1708,3 @@ body {
   margin: 0;
 }
 
-/* ✅ Logo Bar */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  background: #004d00;
-  color: #fff;
-  font-weight: bold;
-}
-
-/* ✅ Desktop Nav */
-.main-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  margin: 0;
-  padding: 10px;
-  background: #004d00;
-}
-.main-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* ✅ Hide desktop nav on phones */
-@media (max-width: 768px) {
-  .main-nav {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
-}
-
-/* ✅ Hamburger Icon */
-.hamburger {
-  display: none;
-  cursor: pointer;
-  flex-direction: column;
-  gap: 5px;
-  z-index: 2000;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-}
-.hamburger span {
-  width: 30px;
-  height: 3px;
-  background: #fff;
-}
-
-/* ✅ Dropdown Container */
-#dropdown-menu {
-  position: absolute;
-  top: 60px;
-  right: 10px;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  display: none;
-  flex-direction: column;
-  width: 250px;
-  max-height: 300px;
-  overflow-y: auto;
-  z-index: 9999;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-/* ✅ Active state */
-#dropdown-menu.active {
-  display: flex !important;
-}
-
-/* ✅ Dropdown List Items */
-#dropdown-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-#dropdown-menu li {
-  display: block;
-  border-bottom: 1px solid #ccc;
-}
-
-#dropdown-menu a {
-  display: block;
-  padding: 12px 15px;
-  text-decoration: none;
-  color: #000;
-  width: 100%;
-  box-sizing: border-box;
-  font-weight: 500;
-}
-
-#dropdown-menu a:hover {
-  background: #006400;
-  color: #fff;
-}
-
-/* ✅ Submenu Styling */
-.submenu {
-  display: none;
-  background: #f9f9f9;
-  flex-direction: column;
-}
-.submenu li a {
-  padding-left: 30px;
-  font-size: 0.95rem;
-  border-bottom: 1px solid #ddd;
-}
-
-/* ✅ Submenu toggle */
-.has-submenu.open > .submenu {
-  display: flex;
-}
-
-/* ✅ Main dropdown links */
-#dropdown-menu > ul > li > a {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #004d00;
-  background: #e6ffe6;
-}
-
-/* ✅ Submenu links */
-.submenu a {
-  font-size: 0.95rem;
-  font-style: italic;
-  color: #333;
-  background: #f9f9f9;
-}
-
-/* ✅ Hover effects */
-#dropdown-menu > ul > li > a:hover {
-  background: #006400;
-  color: #fff;
-}
-.submenu a:hover {
-  background: #ddd;
-  color: #006400;
-}
