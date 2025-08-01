@@ -1721,3 +1721,16 @@ footer a {
 
 footer a:hover {
   color: #e
+#dropdown-menu {
+  z-index: 999999 !important;
+  background: #fff !important;
+}
+
+#dropdown-menu ul li a {
+  color: #000 !important;
+  display: block !important;
+}
+
+.hero-overlay {
+  z-index: 1; /* ensure dropdown is above */
+}
