@@ -1506,7 +1506,7 @@ img {
 /* Dropdown Menu */
 /* 🔹 Base Dropdown Styling */
 #dropdown-menu {
-    display: flex;                 /* Hidden by default */
+    display: none;                 /* Hidden by default */
     flex-direction: column;        /* Stack items vertically */
     position: fixed;               /* Stay visible on scroll */
     top: 60px;                     /* Adjust to header height */
@@ -1558,12 +1558,17 @@ img {
     display: flex;
     flex-direction: column;        /* Always vertical */
     width: 100%;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 #dropdown-menu li {
     display: block;
     border-bottom: 1px solid #ccc;
     width: 100%;
+    display: block !important;
+    color: #000 !important;
+    background: #fff !important;
 }
 
 /* 🔹 Links */
@@ -1651,32 +1656,4 @@ img {
 
 .whatsapp-btn:hover {
     background-color: #1ebe5d;
-}
-@media (max-width: 600px) {
-  #dropdown-menu {
-    display: flex !important;
-    flex-direction: column !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    height: auto !important;
-    background: #fff !important;
-    z-index: 99999 !important;
-  }
-
-  #dropdown-menu ul {
-    display: flex !important;
-    flex-direction: column !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  #dropdown-menu li, 
-  #dropdown-menu a {
-    display: block !important;
-    color: #000 !important;
-    background: #fff !important;
-  }
 }
