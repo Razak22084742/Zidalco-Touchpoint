@@ -1492,19 +1492,16 @@ img {
 
 .hamburger {
     cursor: pointer;
-    display: none; /* Hidden by default on desktop */
+    display: flex;
     flex-direction: column;
     gap: 5px;
     margin-left: 15px;
     z-index: 2000;
-    padding: 5px;
 }
-
 .hamburger span {
     width: 30px;
     height: 3px;
     background: #fff;
-    transition: all 0.3s ease;
 }
 
 /* Hamburger animation when open */
