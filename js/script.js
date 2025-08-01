@@ -117,3 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+const menu = document.getElementById('dropdown-menu');
+hamburger.addEventListener('click', () => {
+  menu.classList.toggle('active');
+  console.log('Menu children:', menu.innerHTML);
+});
