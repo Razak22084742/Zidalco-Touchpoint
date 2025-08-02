@@ -1713,38 +1713,18 @@ footer a {
   font-weight: 500;
 }
 
-footer a:hover {
-  color: #e
-
-    .bottom-nav {
+.app-bottom-nav {
   position: fixed;
-  bottom: 0;
+  bottom: 0; /* stick to bottom */
   left: 0;
   width: 100%;
-  background: #222;
+  background: #006400; /* ✅ Client green */
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 8px 0;
-  border-top: 2px solid #444;
+  border-radius: 12px 12px 0 0; /* rounded top corners */
   z-index: 9999;
-}
-
-.app-bottom-nav {
-  position: fixed;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 450px;
-  background: #2e7d32; /* ✅ Green bar */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 10px 0;
-  border-radius: 20px;
-  z-index: 9999;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* subtle shadow */
 }
 
 .app-bottom-nav .tab-link {
@@ -1754,19 +1734,12 @@ footer a:hover {
   justify-content: center;
   align-items: center;
   color: #fff;
-  padding: 8px;
-  transition: background 0.3s;
-}
-
-.app-bottom-nav .tab-link:hover {
-  background: rgba(255,255,255,0.15);
-  border-radius: 12px;
 }
 
 .app-bottom-nav svg {
-  width: 28px;
-  height: 28px;
-  fill: #fff; /* ✅ White icons */
+  width: 26px; /* ✅ smaller icon */
+  height: 26px;
+  fill: #fff;
 }
 
 /* ✅ Hide on desktop */
@@ -1775,4 +1748,3 @@ footer a:hover {
     display: none;
   }
 }
-
