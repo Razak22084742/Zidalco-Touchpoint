@@ -1736,12 +1736,14 @@ body {
 
 /* ✅ Footer sits above nav when scrolled to bottom */
 footer {
-  position: relative;
-  z-index: 10000;
-  background: #f5f5f5;
+  background: #fff;
   text-align: center;
   padding: 20px;
+  margin-bottom: 70px; /* ✅ Adds space so it sits above the bar */
+  position: relative;
+  z-index: 1;
 }
+
 
 /* ✅ Hide nav bar on desktop */
 @media screen and (min-width: 1025px) {
