@@ -1736,13 +1736,23 @@ body {
 
 /* ✅ Footer sits above nav when scrolled to bottom */
 footer {
-  background: #fff;
+  position: relative;
+  z-index: 10000;
+  background: #fff; /* white background */
   text-align: center;
   padding: 20px;
-  margin-bottom: 70px; /* ✅ Adds space so it sits above the bar */
-  position: relative;
-  z-index: 1;
+  color: #000; /* ✅ black text */
 }
+
+footer a {
+  color: #000; /* ✅ make footer links black */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 
 
 /* ✅ Hide nav bar on desktop */
