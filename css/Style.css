@@ -1730,29 +1730,48 @@ footer a:hover {
   z-index: 9999;
 }
 
-/* Links */
-.bottom-nav a {
-  color: #fff;
+.app-bottom-nav {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 450px;
+  background: #2e7d32; /* ✅ Green bar */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  border-radius: 20px;
+  z-index: 9999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* subtle shadow */
+}
+
+.app-bottom-nav .tab-link {
+  flex: 1;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+  color: #fff;
   padding: 8px;
-  transition: color 0.3s;
+  transition: background 0.3s;
 }
 
-.bottom-nav a:hover {
-  color: #00aced;
+.app-bottom-nav .tab-link:hover {
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
 }
 
-.bottom-nav svg {
+.app-bottom-nav svg {
   width: 28px;
   height: 28px;
+  fill: #fff; /* ✅ White icons */
 }
 
-/* ✅ Hide on desktops */
+/* ✅ Hide on desktop */
 @media screen and (min-width: 1025px) {
-  .bottom-nav {
+  .app-bottom-nav {
     display: none;
   }
 }
