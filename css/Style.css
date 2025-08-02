@@ -1738,20 +1738,34 @@ body {
 footer {
   position: relative;
   z-index: 10000;
-  background: #fff; /* white background */
   text-align: center;
   padding: 20px;
-  color: #000; /* ✅ black text */
+}
+
+/* ✅ Default (tablets & phones): White footer with black text */
+footer {
+  background: #fff;
+  color: #000;
 }
 
 footer a {
-  color: #000; /* ✅ make footer links black */
-  text-decoration: none;
+  color: #000;
+  text-decoration: underline; /* ✅ always underlined */
 }
 
-footer a:hover {
-  text-decoration: underline;
+/* ✅ Desktop: Green footer with white text */
+@media screen and (min-width: 1025px) {
+  footer {
+    background: #006400; /* ✅ Client green */
+    color: #fff;
+  }
+
+  footer a {
+    color: #fff;
+    text-decoration: underline;
+  }
 }
+
 
 
 
