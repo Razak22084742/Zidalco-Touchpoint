@@ -1697,36 +1697,23 @@ body {
   margin: 0;
 }
 
-/* ✅ Green footer with underlined links on all screens */
-footer {
-  background: #004d00;   /* Match header green */
-  color: #fff;
-  text-align: center;
-  padding: 10px;
-  width: 100%;
-}
-
-/* ✅ Footer links: white and underlined */
-footer a {
-  color: #fff;
-  text-decoration: underline; /* Always underlined */
-  font-weight: 500;
-}
-
+/* Green Bottom Nav */
 .app-bottom-nav {
   position: fixed;
-  bottom: 0; /* stick to bottom */
+  bottom: 0;
   left: 0;
   width: 100%;
-  background: #006400; /* ✅ Client green */
+  background: #006400; /* Client's green */
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 8px 0;
-  border-radius: 12px 12px 0 0; /* rounded top corners */
+  border-radius: 12px 12px 0 0;
   z-index: 9999;
+  height: 60px; /* fixed height */
 }
 
+/* Tab links inside nav */
 .app-bottom-nav .tab-link {
   flex: 1;
   text-align: center;
@@ -1737,12 +1724,26 @@ footer a {
 }
 
 .app-bottom-nav svg {
-  width: 26px; /* ✅ smaller icon */
+  width: 26px;
   height: 26px;
   fill: #fff;
 }
 
-/* ✅ Hide on desktop */
+/* ✅ Add bottom padding so footer doesn't hide */
+body {
+  padding-bottom: 70px; /* space equal to nav height */
+}
+
+/* ✅ Footer sits above nav when scrolled to bottom */
+footer {
+  position: relative;
+  z-index: 10000;
+  background: #f5f5f5;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ✅ Hide nav bar on desktop */
 @media screen and (min-width: 1025px) {
   .app-bottom-nav {
     display: none;
