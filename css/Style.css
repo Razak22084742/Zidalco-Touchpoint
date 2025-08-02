@@ -1715,3 +1715,45 @@ footer a {
 
 footer a:hover {
   color: #e
+
+    .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #222;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 2px solid #444;
+  z-index: 9999;
+}
+
+/* Links */
+.bottom-nav a {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 8px;
+  transition: color 0.3s;
+}
+
+.bottom-nav a:hover {
+  color: #00aced;
+}
+
+.bottom-nav svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* ✅ Hide on desktops */
+@media screen and (min-width: 1025px) {
+  .bottom-nav {
+    display: none;
+  }
+}
+
