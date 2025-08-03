@@ -316,6 +316,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("load_portfolio.php")
+        .then(response => response.json())
+        .then(data => {
+            const container = document.querySelector(".portfolio-grid"); // Change to your portfolio grid class
+            data.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "portfolio-card";
+                card.innerHTML = `
+                    <img src="${item.image_url || 'Images/default.jpg'}" alt="${item.title}">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                `;
+                container.appendChild(card);
+            });
+        });
+});
+</script>
+
 </body>
 </html>
 
