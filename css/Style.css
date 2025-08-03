@@ -1783,18 +1783,3 @@ footer a {
     border-radius: 50%;
     margin-left: 5px;
 }
-<style>
-    body { font-family: Arial; padding: 20px; background:#f9f9f9; margin:0; }
-    .table-container { width: 100%; overflow-x: auto; } /* ✅ Scroll on mobile */
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; min-width: 700px; }
-    th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
-    th { background: #333; color: white; }
-    a.delete { color: red; text-decoration: none; }
-    a.toggle { color: blue; text-decoration: none; }
-
-    /* ✅ Mobile adjustments */
-    @media (max-width: 600px) {
-        body { padding: 10px; font-size: 14px; }
-        th, td { padding: 8px; font-size: 13px; }
-    }
-</style>
