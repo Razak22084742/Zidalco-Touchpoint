@@ -23,24 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ]);
     $lastId = $conn->lastInsertId();
 
-    // ✅ SMTP Email Setup
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host = 'smtp.yourliveserver.com'; // 🔑 Live server SMTP
-        $mail->SMTPAuth = true;
-        $mail->Username = 'no-reply@yourdomain.com';
-        $mail->Password = 'your-email-password';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+    
 
-        // ✅ Send to Admin
-        $mail->setFrom('no-reply@yourdomain.com', 'Zidalco Website');
-        $mail->addAddress("zidalcoltd@gmail.com", "Zidalco Admin");
-        $mail->Subject = "📩 New Contact Message from $name";
-        $mail->Body    = "Name: $name\nEmail: $email\nPhone: $phone\nMessage:\n$message";
-        $mail->send();
-
+        
         // ✅ Confirmation to User
         $mail->clearAddresses();
         $mail->addAddress($email, $name);
