@@ -1775,11 +1775,3 @@ footer a {
     display: none;
   }
 }
-.badge {
-    background: red;
-    color: white;
-    font-size: 12px;
-    padding: 3px 7px;
-    border-radius: 50%;
-    margin-left: 5px;
-}
