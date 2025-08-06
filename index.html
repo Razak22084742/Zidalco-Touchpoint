@@ -286,14 +286,13 @@
     <div class="container">
         <h2>Customer Feedback</h2>
 
-        <form action="http://localhost/Zidalco-backend/submit_feedback.php" method="POST">
-            < id= "feedbackForm" >
+        <form id="feedbackForm" action="http://localhost/Zidalco-backend/submit_feedback.php" method="POST">
             <input type="text" name="name" placeholder="Your name" required>
             <input type="email" name="email" placeholder="Your email" required>
             <textarea name="message" rows="4" maxlength="500" placeholder="Your feedback" required></textarea>
-             <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
-             <button type="submit">Submit Feedback</button>
-</form>
+            <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
+            <button type="submit">Submit Feedback</button>
+      </form>
 <div id="feedbackSection">
   <!-- Comments will be inserted here -->
 </div>
