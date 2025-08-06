@@ -287,7 +287,7 @@
     <h2>Customer Feedback</h2>
 
     <!-- ✅ Form -->
-    <form id="feedbackForm" action="http://localhost/Zidalco-backend/submit_feedback.php" method="POST">
+    <form id="feedbackForm">
       <input type="text" name="name" placeholder="Your name" required>
       <input type="email" name="email" placeholder="Your email" required>
       <textarea name="message" rows="4" maxlength="500" placeholder="Your feedback" required></textarea>
@@ -305,37 +305,60 @@
 
 <!-- ✅ JS Script to Load Comments -->
 <script>
-  fetch('http://localhost/Zidalco-backend/get_feedback.php')
-    .then(response => response.json())
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent the page reload
+
+    const formData = new FormData(this);
+
+    fetch('http://localhost/Zidalco-backend/submit_feedback.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.text())
     .then(data => {
-      const feedbackDiv = document.getElementById('feedbackSection');
-      const commentCount = document.getElementById('commentCount');
-
-      if (!Array.isArray(data) || data.length === 0) {
-        feedbackDiv.innerHTML = '<p>No feedback yet.</p>';
-        commentCount.textContent = '0 Comments';
-        return;
-      }
-
-      commentCount.textContent = `${data.length} Comment${data.length > 1 ? 's' : ''}`;
-
-      data.forEach(comment => {
-        const commentBox = document.createElement('div');
-        commentBox.classList.add('comment-box');
-        commentBox.innerHTML = `
-          <strong>${comment.name}</strong><br>
-          <p>${comment.message}</p>
-          <small>${new Date(comment.created_at).toLocaleString()}</small>
-          <hr>
-        `;
-        feedbackDiv.appendChild(commentBox);
-      });
+        alert("Thank you for your feedback!");
+        this.reset(); // Clear form fields
+        loadFeedback(); // Reload comments
     })
     .catch(error => {
-      console.error('Error loading feedback:', error);
+        console.error('Error submitting feedback:', error);
+        alert("Something went wrong. Please try again later.");
     });
-</script>
+});
 
+// Function to load feedback (reuse your original logic)
+function loadFeedback() {
+    fetch('http://localhost/Zidalco-backend/get_feedback.php')
+        .then(response => response.json())
+        .then(data => {
+            const feedbackDiv = document.getElementById('feedbackSection');
+            feedbackDiv.innerHTML = ''; // Clear old comments
+
+            if (data.length === 0) {
+                feedbackDiv.innerHTML = '<p>No feedback yet.</p>';
+                return;
+            }
+
+            data.forEach(comment => {
+                const commentBox = document.createElement('div');
+                commentBox.classList.add('comment-box');
+                commentBox.innerHTML = `
+                    <strong>${comment.name}</strong><br>
+                    <p>${comment.message}</p>
+                    <small>${new Date(comment.created_at).toLocaleString()}</small>
+                    <hr>
+                `;
+                feedbackDiv.appendChild(commentBox);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading feedback:', error);
+        });
+}
+
+// Load feedback initially on page load
+loadFeedback();
+</script>
 
 
     <!-- ✅ Contact CTA -->
