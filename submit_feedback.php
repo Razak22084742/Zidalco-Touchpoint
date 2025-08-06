@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once 'config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,8 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "success";
     } catch (PDOException $e) {
         http_response_code(500);
-        echo "error";
+        echo "error: " . $e->getMessage(); // Show actual DB error
     }
 }
 ?>
+
 
