@@ -95,10 +95,11 @@
             <div class="contact-form">
                 <h2>Get in Touch</h2>
   <form action="http://localhost/zidalco-backend/submit_contact.php" method="POST">
-    <input type="text" name="name" required>
-    <input type="email" name="email" required>
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <input type="tel" name="phone" placeholder="Your Phone" required>
     <input type="text" name="subject" required>
-    <textarea name="message" required></textarea>
+    <textarea name="message" placeholder="Your message" required></textarea>
   
       <!-- ✅ Hidden input for reCAPTCHA token -->
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
