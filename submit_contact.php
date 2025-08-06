@@ -7,8 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = $_POST["subject"];
     $message = $_POST["message"];
 
-    $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$name, $email, $subject, $message]);
+    $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$name, $email, $subject, $phone $message]);
 
     // Send email to 4 addresses
     $recipients = [
