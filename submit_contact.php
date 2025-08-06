@@ -1,16 +1,30 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once "config/db.php";
+    require_once "config/mail_config.php"; // This must contain sendEmail()
 
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $subject = $_POST["subject"];
-    $message = $_POST["message"];
+    $name    = $_POST["name"] ?? '';
+    $email   = $_POST["email"] ?? '';
+    $phone   = $_POST["phone"] ?? '';
+    $subject = $_POST["subject"] ?? 'New Contact Message';
+    $message = $_POST["message"] ?? '';
 
-    $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$name, $email, $subject, $phone $message]);
+    // Insert into database
+    $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$name, $email, $phone, $subject, $message]);
 
-    // Send email to 4 addresses
+    // Email content
+    $body = "
+        <h3>New contact message received:</h3>
+        <p><strong>Name:</strong> $name</p>
+        <p><strong>Email:</strong> $email</p>
+        <p><strong>Phone:</strong> $phone</p>
+        <p><strong>Subject:</strong> $subject</p>
+        <p><strong>Message:</strong><br>$message</p>
+    ";
+
+    $emailSubject = "📨 New Message from $name";
+
     $recipients = [
         "suzy@zidalco.com",
         "dalila@zidalco.com",
@@ -18,34 +32,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "info@zidalco.com"
     ];
 
-    $headers = "From: $email\r\n";
-    $fullMessage = "From: $name <$email>\n\nSubject: $subject\n\n$message";
-
-    foreach ($recipients as $to) {
-        mail($to, "New Contact Message", $fullMessage, $headers);
+    $allSent = true;
+    foreach ($recipients as $recipient) {
+        if (!sendEmail($recipient, 'Zidalco Website', $emailSubject, $body)) {
+            $allSent = false;
+        }
     }
 
-    echo "Message sent successfully!";
+    if ($allSent) {
+        echo "✅ Message sent and stored successfully!";
+    } else {
+        echo "⚠️ Message saved, but email failed to send.";
+    }
 }
+?>
 
-require_once '../config/mail_config.php';
-
-$name    = $_POST['name'];
-$email   = $_POST['email'];
-$phone   = $_POST['phone'];
-$message = $_POST['message'];
-
-$subject = "📨 New Message from $name";
-$body    = "
-    <h3>New message received:</h3>
-    <p><strong>Name:</strong> $name</p>
-    <p><strong>Email:</strong> $email</p>
-    <p><strong>Phone:</strong> $phone</p>
-    <p><strong>Message:</strong><br>$message</p>
-";
-
-if (sendEmail($email, $name, $subject, $body)) {
-    echo "✅ Message sent successfully!";
-} else {
-    echo "❌ Failed to send message.";
-}
