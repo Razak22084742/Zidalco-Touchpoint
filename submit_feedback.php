@@ -15,9 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "success";
     } catch (PDOException $e) {
         http_response_code(500);
-        echo "error: " . $e->getMessage(); // Show actual DB error
+        echo "error: " . $e->getMessage(); // Detailed for debugging
     }
 }
 ?>
-
 
