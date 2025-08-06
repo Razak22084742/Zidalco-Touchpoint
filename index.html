@@ -292,6 +292,37 @@
     <textarea name="message" placeholder="Your message" required></textarea>
     <button type="submit">Submit Feedback</button>
 </form>
+<div id="feedbackSection">
+  <!-- Comments will be inserted here -->
+</div>
+
+<script>
+  fetch('feedback/get_feedback.php')
+    .then(response => response.json())
+    .then(data => {
+      const feedbackDiv = document.getElementById('feedbackSection');
+
+      if (data.length === 0) {
+        feedbackDiv.innerHTML = '<p>No feedback yet.</p>';
+        return;
+      }
+
+      data.forEach(comment => {
+        const commentBox = document.createElement('div');
+        commentBox.classList.add('comment-box');
+        commentBox.innerHTML = `
+          <strong>${comment.name}</strong><br>
+          <p>${comment.message}</p>
+          <small>${new Date(comment.created_at).toLocaleString()}</small>
+          <hr>
+        `;
+        feedbackDiv.appendChild(commentBox);
+      });
+    })
+    .catch(error => {
+      console.error('Error loading feedback:', error);
+    });
+</script>
 
 
         <!-- ✅ Comment Counter -->
