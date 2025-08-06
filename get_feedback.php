@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 require_once 'config/db.php';
 
 try {
@@ -6,6 +7,6 @@ try {
     $feedback = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($feedback);
 } catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]);
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to fetch feedback']);
 }
-?>
