@@ -94,13 +94,13 @@
             <!-- Contact Form -->
             <div class="contact-form">
                 <h2>Get in Touch</h2>
-                <form id="contactForm" method="POST" action="feedback/submit_feedback.php">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <input type="tel" name="phone" placeholder="Your Phone" required>
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-
-                    <!-- ✅ Hidden input for reCAPTCHA token -->
+  <form action="http://localhost/zidalco-backend/submit_contact.php" method="POST">
+    <input type="text" name="name" required>
+    <input type="email" name="email" required>
+    <input type="text" name="subject" required>
+    <textarea name="message" required></textarea>
+  
+      <!-- ✅ Hidden input for reCAPTCHA token -->
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
                     <button type="submit" class="btn">Send Message</button>
