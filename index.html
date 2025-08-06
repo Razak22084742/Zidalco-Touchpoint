@@ -282,32 +282,42 @@
         </div>
     </section>
 
-    <section class="feedback">
-    <div class="container">
-        <h2>Customer Feedback</h2> 
-    
+  <section class="feedback">
+  <div class="container">
+    <h2>Customer Feedback</h2>
 
-        <form action="http://localhost/Zidalco-backend/submit_feedback.php" method="POST">
-            <input type="text" name="name" placeholder="Your name" required>
-            <input type="email" name="email" placeholder="Your email" required>
-            <textarea name="message" rows="4" maxlength="500" placeholder="Your feedback" required></textarea>
-            <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
-            <button type="submit">Submit Feedback</button>
-      </form>
-<div id="feedbackSection">
-  <!-- Comments will be inserted here -->
-</div>
+    <!-- ✅ Form -->
+    <form id="feedbackForm" action="http://localhost/Zidalco-backend/submit_feedback.php" method="POST">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="4" maxlength="500" placeholder="Your feedback" required></textarea>
+      <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
+      <button type="submit">Submit Feedback</button>
+    </form>
 
+    <!-- ✅ Comment Count -->
+    <h3 id="commentCount">0 Comments</h3>
+
+    <!-- ✅ Comment List -->
+    <div id="feedbackSection"></div>
+  </div>
+</section>
+
+<!-- ✅ JS Script to Load Comments -->
 <script>
-  fetch('feedback/get_feedback.php')
+  fetch('http://localhost/Zidalco-backend/get_feedback.php')
     .then(response => response.json())
     .then(data => {
       const feedbackDiv = document.getElementById('feedbackSection');
+      const commentCount = document.getElementById('commentCount');
 
-      if (data.length === 0) {
+      if (!Array.isArray(data) || data.length === 0) {
         feedbackDiv.innerHTML = '<p>No feedback yet.</p>';
+        commentCount.textContent = '0 Comments';
         return;
       }
+
+      commentCount.textContent = `${data.length} Comment${data.length > 1 ? 's' : ''}`;
 
       data.forEach(comment => {
         const commentBox = document.createElement('div');
@@ -326,14 +336,6 @@
     });
 </script>
 
-
-        <!-- ✅ Comment Counter -->
-        <h3 id="commentCount">0 Comments</h3>
-
-        <!-- ✅ Comment List -->
-        <div class="comments-list" id="commentsList"></div>
-    </div>
-</section>
 
 
     <!-- ✅ Contact CTA -->
