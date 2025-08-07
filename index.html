@@ -289,7 +289,7 @@
     <!-- ✅ Form -->
    <!-- ✅ Feedback Form -->
 <form id="feedbackForm">
-  <input type="text" name="name" placeholder="Your name" required>
+ <input type="text" name="name" placeholder="Your name" required>
   <input type="email" name="email" placeholder="Your email" required>
   <textarea name="message" rows="4" maxlength="500" placeholder="Your feedback" required></textarea>
   <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
@@ -304,12 +304,14 @@
 
 <!-- ✅ JS Script -->
 <script>
-const backendURL = 'http://localhost/Zidalco-backend'; // 🔁 Change this to your live domain when online
+const backendURL = 'https://zidalco.infinityfreeapp.me/get_feedback.php'; // 🔁 Change this to your live domain when online
 
 // Character counter
 document.querySelector('textarea[name="message"]').addEventListener('input', function() {
     document.getElementById('charCount').innerText = this.value.length;
 });
+
+const backendURL = 'https://zidalco.infinityfreeapp.me'; // ✅ Base domain only
 
 // Submit feedback
 document.getElementById('feedbackForm').addEventListener('submit', function(e) {
@@ -376,6 +378,7 @@ function loadFeedback() {
 // Initial load
 loadFeedback();
 </script>
+
 
 
     <!-- ✅ Contact CTA -->
