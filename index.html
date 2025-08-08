@@ -299,51 +299,6 @@
   </div>
 </section> 
 
-<script>
-const backendURL = 'https://zidalco.infinityfree.me/feedback.php';
-const backendURL = 'https://zidalco.infinityfree.me/get_feedback.php';
-
-
-
-// Load feedback comments
-function loadFeedback() {
-    fetch(backendURL)
-        .then(res => res.json())
-        .then(data => {
-            const section = document.getElementById('feedbackSection');
-            const count = document.getElementById('commentCount');
-            section.innerHTML = '';
-
-            if (!data.length) {
-                section.innerHTML = '<p>No feedback yet.</p>';
-                count.innerText = '0 Comments';
-                return;
-            }
-
-            count.innerText = `${data.length} Comment${data.length > 1 ? 's' : ''}`;
-
-            data.forEach(comment => {
-                const box = document.createElement('div');
-                box.classList.add('comment-box');
-                box.innerHTML = `
-                    <strong>${comment.name}</strong><br>
-                    <p>${comment.message}</p>
-                    <small>${new Date(comment.created_at).toLocaleString()}</small>
-                    <hr>
-                `;
-                section.appendChild(box);
-            });
-        })
-        .catch(error => {
-            console.error('Error loading feedback:', error);
-        });
-}
-
-// Initial load
-loadFeedback();
-</script>
-
-   
 
 
  <!-- ✅ Contact CTA -->
@@ -436,6 +391,8 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault();
         const name = feedbackForm.name.value.trim();
         const message = feedbackForm.message.value.trim();
+        const backendURL = 'https://zidalco.infinityfree.me/feedback.php';
+        
 
         if (name && message) {
             const newComment = { name, message, date: new Date().toLocaleString() };
@@ -454,6 +411,7 @@ document.addEventListener("DOMContentLoaded", function() {
         commentsList.innerHTML = "";
         comments.forEach(comment => {
             const div = document.createElement("div");
+            const backendURL = 'https://zidalco.infinityfree.me/get_feedback.php';
             div.className = "comment-item";
             div.innerHTML = `<strong>${comment.name}</strong> <small>(${comment.date})</small><p>${comment.message}</p>`;
             commentsList.prepend(div);
