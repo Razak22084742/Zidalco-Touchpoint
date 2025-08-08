@@ -300,29 +300,25 @@
 </section> 
 <!-- ✅ JS Script to Load Comments -->
 <script>
-  fetch('http://localhost/Zidalco-backend/get_feedback.php')
+  fetch('https://zidalco.infinityfree.me/get_feedback.php')
     .then(response => response.json())
     .then(data => {
       const feedbackDiv = document.getElementById('feedbackSection');
-      const commentCount = document.getElementById('commentCount');
 
-      if (!Array.isArray(data) || data.length === 0) {
+      if (data.length === 0) {
         feedbackDiv.innerHTML = '<p>No feedback yet.</p>';
-        commentCount.textContent = '0 Comments';
         return;
       }
-
-      commentCount.textContent = `${data.length} Comment${data.length > 1 ? 's' : ''}`;
 
       data.forEach(comment => {
         const commentBox = document.createElement('div');
         commentBox.classList.add('comment-box');
-        commentBox.innerHTML = `
+        commentBox.innerHTML = 
           <strong>${comment.name}</strong><br>
           <p>${comment.message}</p>
           <small>${new Date(comment.created_at).toLocaleString()}</small>
           <hr>
-        `;
+        ;
         feedbackDiv.appendChild(commentBox);
       });
     })
@@ -442,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function() {
         commentsList.innerHTML = "";
         comments.forEach(comment => {
             const div = document.createElement("div");
-            const backendURL = 'https://zidalco.infinityfree.me/get_feedback.php';
+            const backendURL = 'https://zidalco.infinityfree.me/feedback.php';
             div.className = "comment-item";
             div.innerHTML = `<strong>${comment.name}</strong> <small>(${comment.date})</small><p>${comment.message}</p>`;
             commentsList.prepend(div);
