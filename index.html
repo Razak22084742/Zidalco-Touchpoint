@@ -282,14 +282,12 @@
         </div>
     </section>
 
+    <!-- ✅ Feedback Form -->
   <section class="feedback">
   <div class="container">
     <h2>Customer Feedback</h2>
-
-    <!-- ✅ Form -->
-   <!-- ✅ Feedback Form -->
 <form id="feedbackForm">
- <input type="text" name="name" placeholder="Your name" required>
+  <input type="text" name="name" placeholder="Your name" required>
   <input type="email" name="email" placeholder="Your email" required>
   <textarea name="message" rows="4" maxlength="500" placeholder="Your feedback" required></textarea>
   <div class="char-counter"><span id="charCount">0</span>/500 characters</div>
@@ -300,18 +298,16 @@
 <h3 id="commentCount">0 Comments</h3>
 
 <!-- ✅ Comment List -->
-<div class="comments-list" id="commentsList"></div>
-    </div>
-</section>
-<script> 
-    const backendURL = 'https://zidalco.infinityfree.me/submit_feedback.php'; // 🔁 Change this to your live domain when online
+<div class="comments-list" id="feedbackSection"></div>
+</div>
+</section> 
+<script>
+const backendURL = 'https://zidalco.infinityfree.me'; // Base domain
 
 // Character counter
 document.querySelector('textarea[name="message"]').addEventListener('input', function() {
     document.getElementById('charCount').innerText = this.value.length;
 });
-
-const backendURL = 'https://zidalco.infinityfree.me'; // ✅ Base domain only
 
 // Submit feedback
 document.getElementById('feedbackForm').addEventListener('submit', function(e) {
@@ -319,21 +315,17 @@ document.getElementById('feedbackForm').addEventListener('submit', function(e) {
 
     const formData = new FormData(this);
 
-    fetch('https://zidalco.infinityfree.me/get_feedback.php')
-  .then(res => res.json())
-  .then(data => {
-      console.log(data);
-      // render comments
- 
-
+    fetch(`${backendURL}/submit_feedback.php`, {
+        method: 'POST',
+        body: formData
     })
     .then(res => res.text())
     .then(data => {
         if (data.includes("success")) {
             alert("✅ Thank you for your feedback!");
             this.reset();
-            loadFeedback();
             document.getElementById('charCount').innerText = "0";
+            loadFeedback();
         } else {
             alert("❌ Something went wrong: " + data);
             console.error(data);
@@ -382,6 +374,7 @@ function loadFeedback() {
 // Initial load
 loadFeedback();
 </script>
+   
 
 
  <!-- ✅ Contact CTA -->
