@@ -288,7 +288,7 @@
 
     <!-- ✅ Form -->
    <!-- ✅ Feedback Form -->
-<form action="https://zidalco.infinityfree.me/submit_feedback.php">
+<form id="feedbackForm">
  <input type="text" name="name" placeholder="Your name" required>
   <input type="email" name="email" placeholder="Your email" required>
   <textarea name="message" rows="4" maxlength="500" placeholder="Your feedback" required></textarea>
@@ -302,6 +302,82 @@
 <!-- ✅ Comment List -->
 <div id="feedbackSection"></div>
 </section>
+<script> 
+    const backendURL = 'https://zidalco.infinityfree.me/get_feedback.php'; // 🔁 Change this to your live domain when online
+
+// Character counter
+document.querySelector('textarea[name="message"]').addEventListener('input', function() {
+    document.getElementById('charCount').innerText = this.value.length;
+});
+
+const backendURL = 'https://zidalco.infinityfree.me'; // ✅ Base domain only
+
+// Submit feedback
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    fetch(`${backendURL}/submit_feedback.php`, {
+        method: 'POST',
+        body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+        if (data.includes("success")) {
+            alert("✅ Thank you for your feedback!");
+            this.reset();
+            loadFeedback();
+            document.getElementById('charCount').innerText = "0";
+        } else {
+            alert("❌ Something went wrong: " + data);
+            console.error(data);
+        }
+    })
+    .catch(error => {
+        console.error('Error submitting feedback:', error);
+        alert("❌ Network error. Please try again later.");
+    });
+});
+
+// Load feedback comments
+function loadFeedback() {
+    fetch(`${backendURL}/get_feedback.php`)
+        .then(res => res.json())
+        .then(data => {
+            const section = document.getElementById('feedbackSection');
+            const count = document.getElementById('commentCount');
+            section.innerHTML = '';
+
+            if (!data.length) {
+                section.innerHTML = '<p>No feedback yet.</p>';
+                count.innerText = '0 Comments';
+                return;
+            }
+
+            count.innerText = `${data.length} Comment${data.length > 1 ? 's' : ''}`;
+
+            data.forEach(comment => {
+                const box = document.createElement('div');
+                box.classList.add('comment-box');
+                box.innerHTML = `
+                    <strong>${comment.name}</strong><br>
+                    <p>${comment.message}</p>
+                    <small>${new Date(comment.created_at).toLocaleString()}</small>
+                    <hr>
+                `;
+                section.appendChild(box);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading feedback:', error);
+        });
+}
+
+// Initial load
+loadFeedback();
+</script>
+
 
  <!-- ✅ Contact CTA -->
     <section class="contact-cta">
